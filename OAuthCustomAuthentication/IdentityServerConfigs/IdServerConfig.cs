@@ -20,7 +20,7 @@ namespace OAuthCustomAuthentication.IdentityServerConfigs
                 {
                     new Secret("ClientSecretsPlaceholder".Sha256()) // Accepts dynamic secret
                 },
-                AccessTokenLifetime = 60, // lifetime token expiry in seconds
+                AccessTokenLifetime = 600, // lifetime token expiry in seconds
                 RequireClientSecret = false,
                 RequireConsent = false
             }
