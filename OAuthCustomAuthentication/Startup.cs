@@ -44,6 +44,7 @@ namespace OAuthCustomAuthentication
             services.AddIdentityServer(options => options.InputLengthRestrictions.ClientSecret = 256)
                 .AddDeveloperSigningCredential()  
                 .AddCustomTokenRequestValidator<CustomTokenRequestValidator>()
+                .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
                 .AddInMemoryApiScopes(IdServerConfig.ApiScopes)
                 .AddInMemoryClients(IdServerConfig.Clients);
 
