@@ -36,3 +36,36 @@ The context object gives you access to:
 * modifying the request parameters, e.g. access token lifetime and type, client claims, and the confirmation method
 * 
 You can register your implementation of the validator using the AddCustomTokenRequestValidator extension method on the configuration builder.
+
+POSTMAN Token Request for Custom Validation Screenshot
+
+![token request screenshot](https://github.com/rajquest/OAuthCustomAuthentication/blob/master/OAuthCustomAuthentication/images/gitPics/postmanTokenRequest.PNG?raw=true)
+
+Use Bearer Token to invoke API's thereafter to Authorize requests by providing the valid Bearer Token value
+
+![API Request Screenshot](https://github.com/rajquest/OAuthCustomAuthentication/blob/master/OAuthCustomAuthentication/images/gitPics/WebAPIRequest.PNG)
+
+- - - -
+# Resource Owner Password Validation
+
+If you want to use the OAuth 2.0 resource owner password credential grant (aka password), you need to implement and register the IResourceOwnerPasswordValidator interface:
+
+
+```javascript
+/// <summary>
+/// Allows inserting custom validation logic into token requests
+/// </summary>
+public interface IResourceOwnerPasswordValidator
+{
+    /// <summary>
+    /// Validates the resource owner password credential
+    /// </summary>
+    /// <param name="context">The context.</param>
+    Task ValidateAsync(ResourceOwnerPasswordValidationContext context);
+}
+```
+**POSTMAN Token Request Endpoint for Password Grant Example**
+
+The OAuth 2.0 resource owner password grant allows a client to send username and password to the token service and get an access token back that represents that user.
+
+![token request screenshot](https://github.com/rajquest/OAuthCustomAuthentication/blob/master/OAuthCustomAuthentication/images/gitPics/postmanPasswordGrantTokenRequest.PNG?raw=true)
